@@ -1,22 +1,27 @@
 import java.util.Scanner;
 
-class BankAccount {
+class BankAccount 
+{
     private double balance;
 
-    public BankAccount(double balance) {
+    public BankAccount(double balance) 
+    {
         this.balance = balance;
     }
 
-    public double check_balance() {
+    public double check_balance() 
+    {
         return balance;
     }
 
-    public void deposit(double deposit_amt) {
+    public void deposit(double deposit_amt) 
+    {
         balance += deposit_amt;
     }
-
-    public boolean withdrawl(double withdraw_amt) {
-        if (balance >= withdraw_amt) {
+    public boolean withdrawl(double withdraw_amt) 
+    {
+        if (balance >= withdraw_amt) 
+        {
             balance -= withdraw_amt;
             return true;
         }
@@ -24,33 +29,40 @@ class BankAccount {
     }
 }
 
-class ATM {
+class ATM 
+{
     Scanner sc = new Scanner(System.in);
     private BankAccount account;
     private int pin;
 
-    public ATM(BankAccount account, int pin) {
+    public ATM(BankAccount account, int pin)
+    {
         this.account = account;
         this.pin = pin;
     }
 
-    public void displayMenu() {
+    public void displayMenu() 
+    {
         System.out.println("Welcome to Atm");
         System.out.println("1. Withdraw");
         System.out.println("2. Deposit");
         System.out.println("3. Check Balance");
         System.out.println("4. Exit");
-        while (true) {
+        while (true) 
+        {
             System.out.println("Enter the choice:");
             int choice = sc.nextInt();
             System.out.print("Enter your PIN:");
             int enteredPIN = sc.nextInt();
-            if (enteredPIN == pin) {
-                switch (choice) {
+            if (enteredPIN == pin)
+            {
+                switch (choice) 
+                {
                     case 1:
                         System.out.println("Enter the amount to withdraw:");
                         double withdraw_amt = sc.nextDouble();
-                        if (account.withdrawl(withdraw_amt)) {
+                        if (account.withdrawl(withdraw_amt)) 
+                        {
                             System.out.println("Withdraw successful");
                         } else
                             System.out.println("Insufficent Balance");
@@ -79,8 +91,10 @@ class ATM {
     }
 }
 
-class Main {
-    public static void main(String[] args) {
+class Main 
+{
+    public static void main(String[] args) 
+    {
         BankAccount userAccount = new BankAccount(1000);
         int userPIN = 8430;
         ATM atm = new ATM(userAccount, userPIN);
